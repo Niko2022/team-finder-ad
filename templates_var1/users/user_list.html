@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Участники{% endblock %}
+
+{% block content %}
+<div class="users-page-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+
+    <!-- Заголовок строго в левом верхнем углу -->
+    <h1 class="users-page-title" style="margin: 0 0 32px 0; font-size: 28px; font-weight: 600; text-align: left;">
+        Участники проекта
+    </h1>
+
+    <!-- Сетка карточек -->
+    <div class="users-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px;">
+        {% for user in users %}
+        <a href="{% url 'users:user_detail' user.id %}" class="user-card" style="text-decoration: none; color: inherit; display: block; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="Аватар" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;">
+            {% else %}
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 32px; color: white; font-weight: bold;">
+                    {{ user.name|first|upper }}
+                </div>
+            {% endif %}
+            <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 500;">{{ user.name }} {{ user.surname }}</h3>
+            <p style="margin: 0; color: #6b7280; font-size: 14px; line-height: 1.4; min-height: 40px;">{{ user.about|truncatechars:60|default:"Нет описания" }}</p>
+        </a>
+        {% empty %}
+        <p style="grid-column: 1 / -1; text-align: center; color: #6b7280; padding: 40px 0;">Пользователей пока нет.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
