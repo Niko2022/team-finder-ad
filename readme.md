@@ -26,36 +26,6 @@ TASK_VERSION=1
 ```bash
 docker compose up -d
 ```
-# TeamFinder — Вариант 2: Навыки пользователей + фильтрация
-
-## Для ревьюера: как запустить проект
-
-### 1. Клонировать и войти в папку
-```bash
-git clone <repo-url>
-cd team-finder
-```
-
-### 2. Создать `.env`
-```bash
-cp .env_example .env
-```
-Заполнить `.env` (важно: `TASK_VERSION=2`):
-```
-DJANGO_SECRET_KEY=your-secret-key-here
-DJANGO_DEBUG=True
-POSTGRES_DB=team_finder
-POSTGRES_USER=team_finder
-POSTGRES_PASSWORD=team_finder
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-TASK_VERSION=2
-```
-
-### 3. Запустить базу данных
-```bash
-docker compose up -d
-```
 
 ### 4. Виртуальное окружение и зависимости
 ```bash
