@@ -71,51 +71,6 @@ python manage.py migrate
 python manage.py create_test_data   # создаёт 3 пользователей + 3 проекта
 python manage.py createsuperuser    # опционально
 ```
-# TeamFinder — Вариант 2: Навыки пользователей + фильтрация
-
-## Для ревьюера: как запустить проект
-
-### 1. Клонировать и войти в папку
-```bash
-git clone <repo-url>
-cd team-finder
-```
-
-### 2. Создать `.env`
-```bash
-cp .env_example .env
-```
-Заполнить `.env` (важно: `TASK_VERSION=2`):
-```
-DJANGO_SECRET_KEY=your-secret-key-here
-DJANGO_DEBUG=True
-POSTGRES_DB=team_finder
-POSTGRES_USER=team_finder
-POSTGRES_PASSWORD=team_finder
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-TASK_VERSION=2
-```
-
-### 3. Запустить базу данных
-```bash
-docker compose up -d
-```
-
-### 4. Виртуальное окружение и зависимости
-```bash
-python3 -m venv venv
-source venv/bin/activate   # Linux/Mac
-# venv\Scripts\activate    # Windows
-pip install -r requirements.txt
-```
-
-### 5. Миграции и тестовые данные
-```bash
-python manage.py migrate
-python manage.py create_test_data   # создаёт 3 пользователей + 3 проекта
-python manage.py createsuperuser    # опционально
-```
 
 ### 6. Запуск
 ```bash
