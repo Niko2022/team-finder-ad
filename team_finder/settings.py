@@ -1,9 +1,9 @@
 from pathlib import Path
+
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# TODO: Создать и заполнить .env, ориентируясь на .env_example
 
 SECRET_KEY = config("DJANGO_SECRET_KEY")
 
@@ -119,20 +119,20 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
 # Настройки для статических файлов
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Настройки для медиа файлов
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Настройки для шаблонов
-TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates_var1']
+TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates_var1"]
 
 # Настройки авторизации
-LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'projects:project_list'
-LOGOUT_REDIRECT_URL = 'projects:project_list'
+LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = "projects:project_list"
+LOGOUT_REDIRECT_URL = "projects:project_list"

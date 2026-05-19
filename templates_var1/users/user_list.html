@@ -6,12 +6,10 @@
 {% block content %}
 <div class="users-page-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
 
-    <!-- Заголовок строго в левом верхнем углу -->
     <h1 class="users-page-title" style="margin: 0 0 32px 0; font-size: 28px; font-weight: 600; text-align: left;">
         Участники проекта
     </h1>
 
-    <!-- Сетка карточек -->
     <div class="users-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px;">
         {% for user in users %}
         <a href="{% url 'users:user_detail' user.id %}" class="user-card" style="text-decoration: none; color: inherit; display: block; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;">
@@ -29,5 +27,26 @@
         <p style="grid-column: 1 / -1; text-align: center; color: #6b7280; padding: 40px 0;">Пользователей пока нет.</p>
         {% endfor %}
     </div>
+
+    {% if users.has_other_pages %}
+    <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+        {% if users.has_previous %}
+        <a href="?page={{ users.previous_page_number }}" style="padding: 8px 16px; background: #fff; border: 1px solid #d1d5db; border-radius: 8px; text-decoration: none; color: #374151; font-size: 14px;">
+            ← Назад
+        </a>
+        {% endif %}
+
+        <span style="padding: 8px 16px; color: #4b5563; font-size: 14px; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+            Страница {{ users.number }} из {{ users.paginator.num_pages }}
+        </span>
+
+        {% if users.has_next %}
+        <a href="?page={{ users.next_page_number }}" style="padding: 8px 16px; background: #fff; border: 1px solid #d1d5db; border-radius: 8px; text-decoration: none; color: #374151; font-size: 14px;">
+            Вперёд →
+        </a>
+        {% endif %}
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}
