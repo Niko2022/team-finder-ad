@@ -122,8 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirm('Вы уверены, что хотите завершить проект?')) return;
 
             const projectId = completeBtn.dataset.id;
-            // Используем правильный URL без /projects/ в начале, так как у нас root include
-            const url = `/projects/${projectId}/toggle-favorite/`;
+            const url = `/projects/${projectId}/complete/`;
 
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value
                            || getCookie('csrftoken');

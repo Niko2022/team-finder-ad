@@ -102,8 +102,8 @@ def complete_project(request, project_id):
             status=HTTPStatus.FORBIDDEN,
         )
 
-    if project.status == Project.STATUS_OPEN:
-        project.status = Project.STATUS_CLOSED
+    if project.status == "open":
+        project.status = "closed"
         project.save()
         return JsonResponse({"status": "ok", "project_status": "closed"})
 
